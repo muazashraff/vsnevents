@@ -9,7 +9,6 @@ export function Hero({
   image,
   cta,
   tone = "cream",
-  patternBg = false,
 }: {
   eyebrow: string;
   headline: string;
@@ -17,23 +16,13 @@ export function Hero({
   image: SiteImage;
   cta?: React.ReactNode;
   tone?: "cream" | "oxblood";
-  /** Tone-on-tone celebration pattern behind the text column — homepage hero only, see globals.css */
-  patternBg?: boolean;
 }) {
   const wash = tone === "oxblood" ? "bg-oxblood" : "bg-cream-dark";
 
   return (
     <section className={`${wash} border-b border-ink/10`}>
-      <div
-        className={`mx-auto grid max-w-7xl gap-10 px-6 py-14 md:grid-cols-2 md:gap-16 md:px-10 md:py-20 ${
-          patternBg ? "items-stretch" : "items-center"
-        }`}
-      >
-        <div
-          className={`${tone === "oxblood" ? "text-cream" : "text-ink"} ${
-            patternBg ? "hero-pattern-bg flex flex-col justify-center" : ""
-          }`}
-        >
+      <div className="mx-auto grid max-w-7xl items-center gap-10 px-6 py-14 md:grid-cols-2 md:gap-16 md:px-10 md:py-20">
+        <div className={tone === "oxblood" ? "text-cream" : "text-ink"}>
           <Eyebrow tone={tone === "oxblood" ? "cream" : "gold"}>{eyebrow}</Eyebrow>
           <h1 className="mt-4 font-display text-4xl leading-[1.1] font-medium text-balance md:text-5xl lg:text-6xl">
             {headline}

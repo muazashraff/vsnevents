@@ -12,7 +12,6 @@ export default function HomePage() {
   return (
     <>
       <Hero
-        patternBg
         eyebrow={homeCopy.hero.eyebrow}
         headline={homeCopy.hero.headline}
         sub={homeCopy.hero.sub}

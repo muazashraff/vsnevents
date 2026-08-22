@@ -25,15 +25,4 @@ body {
   .text-balance {
     text-wrap: balance;
   }
-
-  /*
-   * Tone-on-tone celebration motif (cake/bloom/bow/quatrefoil), baked at very
-   * low opacity into the SVG itself — scoped to the homepage hero's text
-   * column only. Do not apply this class anywhere else on the site.
-   */
-  .hero-pattern-bg {
-    background-image: url("/patterns/celebration-tile.svg");
-    background-repeat: repeat;
-    background-size: 110px 110px;
-  }
 }
