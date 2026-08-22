@@ -96,6 +96,12 @@ export const images = {
     alt: "Inside the VSN Events shop — cream display shelving with cakes, balloon bubbles, and floral arrangements, and a seating area for consultations",
     caption: "Inside the shop on Listerhills Road",
   },
+  logoMark: {
+    src: "/images/brand/vsn-logo-mark.png",
+    width: 1024,
+    height: 1024,
+    alt: "VSN Events circular logo mark — an interlocking 'N' monogram in white on cream and gold",
+  },
 } as const satisfies Record<string, SiteImage>;
 
 export type ImageKey = keyof typeof images;

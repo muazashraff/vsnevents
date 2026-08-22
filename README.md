@@ -33,10 +33,12 @@ The three files in `reference-only/` (opening-hours post, Instagram profile, Abo
 
 ## Logo
 
-The navbar currently renders the wordmark as tracked-caps type ("VSN EVENTS" in Fraunces Medium) because no vector logo file exists yet. Once the client provides a high-res/vector logo:
+The client's real circular "N" monogram (their Instagram profile picture) is in use as of `public/images/brand/vsn-logo-mark.png` — cropped and alpha-masked from a screenshot into a clean transparent circle (see `src/content/images.ts` → `logoMark`). It's live in two places:
 
-- Replace the text wordmark in `src/components/layout/Header.tsx` and `Footer.tsx` with an `<Image>` of the real mark.
-- Replace the generated "N" monogram favicon in `src/app/icon.tsx` with the real logo mark.
+- **Favicon** — `src/app/icon.png` (a 512×512 export of the same mark; Next's App Router picks up `icon.png` automatically, no metadata wiring needed).
+- **Homepage hero** — rendered above the eyebrow via `Hero`'s `showLogo` prop, set on the Home page only (`src/app/page.tsx`).
+
+The navbar wordmark still renders as tracked-caps type ("VSN EVENTS" in Fraunces Medium) — the circular mark is a monogram, not a full lockup, so it doesn't replace it. If the client provides a proper horizontal logo lockup later, swap the text wordmark in `src/components/layout/Header.tsx` and `Footer.tsx` for an `<Image>` of it.
 
 ## Forms (Formspree)
 
@@ -93,7 +95,7 @@ No domain is connected yet. Once the client has one:
 
 ## Open items to confirm with the client
 
-- **Real, high-res/vector logo file** — see "Logo" above.
+- **Full horizontal logo lockup** — the circular monogram is now live (favicon + homepage), but the navbar text wordmark still awaits a proper vector lockup if the client has one. See "Logo" above.
 - **Google Business Profile place ID** — needed to wire up real reviews (see "Google reviews" above).
 - **Live Instagram feed vs. the current hardcoded grid** — needs their Instagram account connected to Meta's API if they want it later.
 - **Confirm `vsnevents@mail.com` / `07544 434441` stay the public contact details long-term** — these were correct as of the brief this site was built from.

@@ -12,6 +12,7 @@ export default function HomePage() {
   return (
     <>
       <Hero
+        showLogo
         eyebrow={homeCopy.hero.eyebrow}
         headline={homeCopy.hero.headline}
         sub={homeCopy.hero.sub}
