@@ -24,10 +24,14 @@ export function Hero({
 
   return (
     <section className={`${wash} border-b border-ink/10`}>
-      <div className="mx-auto grid max-w-7xl items-center gap-10 px-6 py-14 md:grid-cols-2 md:gap-16 md:px-10 md:py-20">
+      <div
+        className={`mx-auto grid max-w-7xl gap-10 px-6 py-14 md:grid-cols-2 md:gap-16 md:px-10 md:py-20 ${
+          patternBg ? "items-stretch" : "items-center"
+        }`}
+      >
         <div
           className={`${tone === "oxblood" ? "text-cream" : "text-ink"} ${
-            patternBg ? "hero-pattern-bg" : ""
+            patternBg ? "hero-pattern-bg flex flex-col justify-center" : ""
           }`}
         >
           <Eyebrow tone={tone === "oxblood" ? "cream" : "gold"}>{eyebrow}</Eyebrow>
