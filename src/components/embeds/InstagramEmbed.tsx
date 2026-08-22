@@ -8,22 +8,36 @@ declare global {
   }
 }
 
+// When several InstagramEmbed instances mount together (the normal case —
+// 3 on this page), each one's effect would otherwise call
+// window.instgrm.Embeds.process() independently and near-simultaneously.
+// Overlapping calls can interrupt Instagram's own processing for whichever
+// blockquotes it hasn't gotten to yet, so coalesce same-tick calls into one.
+let processQueued = false;
+function scheduleProcess() {
+  if (processQueued) return;
+  processQueued = true;
+  requestAnimationFrame(() => {
+    processQueued = false;
+    window.instgrm?.Embeds.process();
+  });
+}
+
 export function InstagramEmbed({ url, caption }: { url: string; caption?: string }) {
   const ref = useRef<HTMLQuoteElement>(null);
 
   useEffect(() => {
     const existingScript = document.getElementById("instagram-embed-script");
-    const process = () => window.instgrm?.Embeds.process();
 
     if (!existingScript) {
       const script = document.createElement("script");
       script.id = "instagram-embed-script";
       script.src = "https://www.instagram.com/embed.js";
       script.async = true;
-      script.onload = process;
+      script.onload = scheduleProcess;
       document.body.appendChild(script);
     } else {
-      process();
+      scheduleProcess();
     }
   }, [url]);
 
