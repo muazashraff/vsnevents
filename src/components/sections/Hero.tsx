@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { Eyebrow } from "@/components/ui/Eyebrow";
-import { images } from "@/content/images";
 import type { SiteImage } from "@/content/images";
 
 export function Hero({
@@ -10,7 +9,6 @@ export function Hero({
   image,
   cta,
   tone = "cream",
-  showLogo = false,
 }: {
   eyebrow: string;
   headline: string;
@@ -18,7 +16,6 @@ export function Hero({
   image: SiteImage;
   cta?: React.ReactNode;
   tone?: "cream" | "oxblood";
-  showLogo?: boolean;
 }) {
   const wash = tone === "oxblood" ? "bg-oxblood" : "bg-cream-dark";
 
@@ -26,15 +23,6 @@ export function Hero({
     <section className={`${wash} border-b border-ink/10`}>
       <div className="mx-auto grid max-w-7xl items-center gap-10 px-6 py-14 md:grid-cols-2 md:gap-16 md:px-10 md:py-20">
         <div className={tone === "oxblood" ? "text-cream" : "text-ink"}>
-          {showLogo && (
-            <Image
-              src={images.logoMark.src}
-              alt={images.logoMark.alt}
-              width={64}
-              height={64}
-              className="mb-6 h-16 w-16"
-            />
-          )}
           <Eyebrow tone={tone === "oxblood" ? "cream" : "gold"}>{eyebrow}</Eyebrow>
           <h1 className="mt-4 font-display text-4xl leading-[1.1] font-medium text-balance md:text-5xl lg:text-6xl">
             {headline}

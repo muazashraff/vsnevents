@@ -1,9 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { navItems } from "@/content/nav";
+import { images } from "@/content/images";
 import { useScrollHeader } from "@/lib/hooks/useScrollHeader";
 
 export function Header() {
@@ -22,10 +24,20 @@ export function Header() {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 md:px-10">
         <Link
           href="/"
-          className="font-display text-lg tracking-[0.08em] text-ink"
+          className="flex items-center gap-2.5"
           onClick={() => setMenuOpen(false)}
         >
-          VSN EVENTS
+          <Image
+            src={images.logoMark.src}
+            alt=""
+            width={36}
+            height={36}
+            className="h-9 w-9 shrink-0"
+            priority
+          />
+          <span className="font-display text-lg tracking-[0.08em] text-ink">
+            VSN EVENTS
+          </span>
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">

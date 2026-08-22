@@ -35,10 +35,10 @@ The three files in `reference-only/` (opening-hours post, Instagram profile, Abo
 
 The client's real circular "N" monogram (their Instagram profile picture) is in use as of `public/images/brand/vsn-logo-mark.png` — cropped and alpha-masked from a screenshot into a clean transparent circle (see `src/content/images.ts` → `logoMark`). It's live in two places:
 
-- **Favicon** — `src/app/icon.png` (a 512×512 export of the same mark; Next's App Router picks up `icon.png` automatically, no metadata wiring needed).
-- **Homepage hero** — rendered above the eyebrow via `Hero`'s `showLogo` prop, set on the Home page only (`src/app/page.tsx`).
+- **Favicon** — `src/app/icon.png` (a 512×512 export of the same mark; Next's App Router picks up `icon.png` automatically, no metadata wiring needed). Favicons are cached hard by browsers — if it doesn't update after a deploy, hard-refresh or open the site in a private window before assuming something's wrong.
+- **Navbar** — `src/components/layout/Header.tsx` pairs the mark (36×36) with the "VSN EVENTS" wordmark, on every page.
 
-The navbar wordmark still renders as tracked-caps type ("VSN EVENTS" in Fraunces Medium) — the circular mark is a monogram, not a full lockup, so it doesn't replace it. If the client provides a proper horizontal logo lockup later, swap the text wordmark in `src/components/layout/Header.tsx` and `Footer.tsx` for an `<Image>` of it.
+The footer still uses the text-only wordmark. If the client provides a proper horizontal logo lockup later, that's the natural place to swap in an `<Image>` too, alongside the header.
 
 ## Forms (Formspree)
 
